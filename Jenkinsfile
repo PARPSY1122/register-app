@@ -4,7 +4,7 @@ pipeline {
         jdk 'java11'
         maven 'maven3'
     }
-    }
+    
     stages{
         stage("Cleanup Workspace"){
                 steps {
@@ -32,3 +32,4 @@ pipeline {
        }
 
     }
+}
