@@ -1,10 +1,9 @@
 pipeline {
-    agent { label 'Jenkins-Agent' }
+    agent { label 'agent' }
     tools {
         jdk 'java11'
         maven 'maven3'
     }
-    
     }
     stages{
         stage("Cleanup Workspace"){
@@ -15,7 +14,7 @@ pipeline {
 
         stage("Checkout from SCM"){
                 steps {
-                    git branch: 'main', credentialsId: 'github', url: 'https://github.com/PARPSY1122/register-app.git'
+                    git branch: 'main', credentialsId: 'github', url: 'https://github.com/PARPSY1122/register-app'
                 }
         }
 
@@ -31,4 +30,5 @@ pipeline {
                  sh "mvn test"
            }
        }
+
     }
