@@ -1,9 +1,10 @@
 pipeline {
-    agent { label 'AgentAns' }
+    agent { label 'agent' }
     tools {
         jdk 'java11'
         maven 'maven3'
     }
+    
     
     stages{
         stage("Cleanup Workspace"){
@@ -14,7 +15,7 @@ pipeline {
 
         stage("Checkout from SCM"){
                 steps {
-                    git branch: 'main', credentialsId: 'github', url: 'https://github.com/PARPSY1122/register-app'
+                    git branch: 'main', credentialsId: 'github', url: 'https://github.com/PARPSY1122/register-app.git'
                 }
         }
 
@@ -30,6 +31,15 @@ pipeline {
                  sh "mvn test"
            }
        }
-
+        
+       stage("SonarQube Analysis"){
+           steps {
+	           script {
+		        withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') { 
+                        sh "mvn sonar:sonar"
+		        }
+	           }	
+           }
+        }  
     }
 }
