@@ -34,5 +34,7 @@
    <h1> Thank You </h1>
    <br>
    <h1> Happy Learning. See You Again. </h1>
+   <br>
+   <h1> project is done with kubectl cluster and awscli with argocli and sonarqube with jenkins ci/cd pipeline </h1>
    
 </form>
